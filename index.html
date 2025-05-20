@@ -3,118 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사람 확인 테스트</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .test-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        #promptText {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #d9534f; /* 강조색 */
-        }
-        input[type="text"] {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            width: 80%; /* 입력 필드 너비 조절 */
-            max-width: 300px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #0275d8; /* 파란색 버튼 */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #025aa5;
-        }
-        #resultMessage {
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            min-height: 1.5em; /* 메시지 영역 확보 */
-        }
-        .success {
-            color: green;
-        }
-        .failure {
-            color: red;
-        }
-    </style>
+    <title>FPS 게임 (HTML/CSS/JS)</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="test-container">
-        <h2>확인 테스트</h2>
-        <p id="promptText">'샤랆많 읽읈 쑤 잇늖 묺쟝'을 다시 입력하시오</p>
-
-        <input type="text" id="userInput" placeholder="여기에 올바른 문장을 입력하세요">
-        <br>
-        <button id="checkButton">확인</button>
-
-        <div id="resultMessage"></div>
+    <div id="game-container">
+        <div id="player-view">
+            <div id="gun"></div>
+        </div>
+        <div id="crosshair">+</div>
+        <div id="bullet-impacts"></div>
     </div>
 
-    <script>
-        // 페이지 로드 완료 후 JavaScript 코드 실행
-        document.addEventListener('DOMContentLoaded', () => {
-            // 정답으로 기대하는 정확한 문자열
-            const correctAnswer = "사람만 읽을 수 있는 문장";
-
-            // 필요한 HTML 요소 가져오기
-            const userInputElement = document.getElementById('userInput');
-            const checkButtonElement = document.getElementById('checkButton');
-            const resultMessageElement = document.getElementById('resultMessage');
-
-            // '확인' 버튼 클릭 이벤트 리스너 추가
-            checkButtonElement.addEventListener('click', () => {
-                // 사용자의 입력 값 가져오기
-                const userInput = userInputElement.value;
-
-                // 정답과 비교 (띄어쓰기, 대소문자 모두 일치해야 함)
-                if (userInput === correctAnswer) {
-                    resultMessageElement.textContent = "사람입니다";
-                    resultMessageElement.className = 'success'; // 성공 스타일 적용
-                     // 성공 시 입력 필드나 버튼을 비활성화하는 등의 추가 로직 가능
-                     // userInputElement.disabled = true;
-                     // checkButtonElement.disabled = true;
-                } else {
-                    resultMessageElement.textContent = "다시 시도하시오";
-                    resultMessageElement.className = 'failure'; // 실패 스타일 적용
-                     // userInputElement.value = ''; // 입력 필드 초기화 가능
-                }
-            });
-
-            // 입력 필드에서 Enter 키를 눌렀을 때도 확인 동작 실행
-            userInputElement.addEventListener('keypress', function(event) {
-                // Enter 키 (코드 13) 확인
-                if (event.key === 'Enter') {
-                    event.preventDefault(); // 기본 제출 동작 방지
-                    checkButtonElement.click(); // 버튼 클릭 이벤트 발생
-                }
-            });
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
